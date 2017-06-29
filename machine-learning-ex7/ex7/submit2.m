@@ -1,0 +1,1 @@
+X = reshape(sin(1:165), 15, 11);Z = reshape(cos(1:121), 11, 11);C = Z(1:5, :);idx = (1 + mod(1:15, 3))';%partId=1;%if partId == '1'  idx = findClosestCentroids(X, C);  out = sprintf('%0.5f ', idx(:));%elseif partId == '2' % centroids = computeCentroids(X, idx, 3);  %out = sprintf('%0.5f ', centroids(:));
