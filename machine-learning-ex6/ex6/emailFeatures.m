@@ -48,7 +48,10 @@ x = zeros(n, 1);
 %
 %
 
-
+for i=1:n
+  x(i)=sum(word_indices==i);
+endfor
+x=x>0;
 
 
 

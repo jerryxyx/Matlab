@@ -11,3 +11,4 @@ load('ex6data3.mat');
     [C, sigma] = dataset3Params(X, y, Xval, yval);
     out = sprintf('%0.5f ', C);
     out = [out sprintf('%0.5f ', sigma)];
+    

@@ -11,7 +11,6 @@ vocabList = getVocabList();
 
 % Init return value
 word_indices = [];
-
 % ========================== Preprocess Email ===========================
 
 % Find the Headers ( \n\n and remove )
@@ -96,14 +95,13 @@ while ~isempty(email_contents)
     % Note: You can use strcmp(str1, str2) to compare two strings (str1 and
     %       str2). It will return 1 only if the two strings are equivalent.
     %
-
-
-
-
-
-
-
-
+    for i = 1:length(str)
+      for j = 1:length(vocabList)
+        if strcmp(str(i),vocabList(j))
+          word_indices(i)=j;
+        endif
+      endfor
+    endfor
 
 
     % =============================================================

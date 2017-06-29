@@ -44,6 +44,8 @@ for i = [1:length(C_vec)]
 endfor
 
 %F1_score = 2*precision.*recall./(precision+recall);
+precision
+recall
 F1_score
 predictions_error
 
