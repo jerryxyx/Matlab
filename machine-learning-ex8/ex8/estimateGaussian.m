@@ -22,7 +22,7 @@ sigma2 = zeros(n, 1);
 %
 
 mu = mean(X,1);
-sigma2 = 1/(m-1)*(X-mu)'*(X-mu);
+sigma2 = 1/(m) * sum((X-mu).^2,1);
 
 
 
