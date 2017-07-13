@@ -42,10 +42,11 @@ for i = 1:size(E, 1),
             assignments = IndexToAssignment(1:prod(F(j).card),F(j).card);
             varMap = find(F(j).var==v);
             if ~isempty(varMap)
-                indxMap = find(assignments(:,varMap) ~= x);
-                A = assignments(indxMap,:);
-                F(j) = SetValueOfAssignment(F(j),A,0);
-            end    
+                finassignments(:,varmap) ~= x;
+                
+            var = F(j).var;
+            
+            F(j) = SetValueOfAssignment(F(j),A,0);
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 				% Check validity of evidence / resulting factor

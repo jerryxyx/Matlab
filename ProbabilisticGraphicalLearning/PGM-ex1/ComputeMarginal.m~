@@ -30,8 +30,8 @@ end
 M = struct('var', [], 'card', [], 'val', []); % Returns empty factor. Change this.
 F = ObserveEvidence(F,E);
 M1 = ComputeJointDistribution(F);
-[marginalV,mapM] = setdiff(M1.var,V);
-M = FactorMarginalization(M1,marginalV);
+[obV,mapM] = setdiff(M1.var,V);
+M = FactorMarginalization(M1,M.var);
 M.val = M.val./sum(M.val);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 end
