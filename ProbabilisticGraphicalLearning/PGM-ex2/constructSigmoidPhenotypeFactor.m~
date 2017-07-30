@@ -49,7 +49,7 @@ phenotypeFactor = struct('var', [], 'card', [], 'val', []);
 phenotypeFactor.var = [phenotypeVar, geneCopyVarOneList', geneCopyVarTwoList'];
 % Fill in phenotypeFactor.card.  This should be a 1-D row vector.
 numAlleles=zeros(1,size(alleleWeights,2));
-numGenes = length(geneCopyVarOneList);
+numGenes = length(genCopyVarOneList);
 for i=1:size(alleleWeights,2)
     numAlleles(i) = length(alleleWeights{i});
 end
@@ -63,7 +63,7 @@ for k=1:prod(phenotypeFactor.card)
         X = zeros(numGenes, numAlleles(gene));
         Y = zeros(numGenes, numAlleles(gene));
         X((gene), assign(gene+1)) = 1;
-        Y((gene), assign(gene+1+numGenes)) = 1;
+        Y((gene), assign(gene+1+length(geneCopyVarOneList))) = 1;
         w = alleleWeights{gene};
         
         %for all = 1:length(w)

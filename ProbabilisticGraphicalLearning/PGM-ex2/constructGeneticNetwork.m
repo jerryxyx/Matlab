@@ -71,7 +71,7 @@ for i = 1:numPeople
       pedigree.parents(i,1),pedigree.parents(i,2));
   else
     factorList(i) = genotypeGivenAlleleFreqsFactor(alleleFreqs,i);
-  endif
+  end
   factorList(i+numPeople) = phenotypeGivenGenotypeFactor(alphaList, i, i+numPeople);
 end
   

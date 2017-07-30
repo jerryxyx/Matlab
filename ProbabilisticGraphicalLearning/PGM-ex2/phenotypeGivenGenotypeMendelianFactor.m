@@ -49,7 +49,7 @@ if isDominant == 1
   %phenotypeFactor.val = SetValueOfAssignment(phenotypeFactor,[1,1;1,2],[2,3])
 elseif isDominant ==0
   traitIndex = AssignmentToIndex([2,1;1,2;1,3],[2,3]);
-endif
-traitIndex
+end
+
 phenotypeFactor.val(traitIndex) = 1;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

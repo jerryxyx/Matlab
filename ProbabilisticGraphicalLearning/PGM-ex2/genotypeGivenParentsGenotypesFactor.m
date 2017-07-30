@@ -73,17 +73,17 @@ for k=1:numGenotype
       childIndex = AssignmentToIndex([k,i,j],genotypeFactor.card);
       mapOne = find(allelesOne == allelesChild(1));
       mapTwo = find(allelesTwo == allelesChild(2));
-      if mapOne && mapTwo
-        genotypeFactor.val(childIndex)+=length(mapOne)/2*length(mapTwo)/2;
-      endif  
+      if all(mapOne) && all(mapTwo)
+        genotypeFactor.val(childIndex)=genotypeFactor.val(childIndex)+length(mapOne)/2*length(mapTwo)/2;
+      end  
       mapOne = find(allelesOne == allelesChild(2));
       mapTwo = find(allelesTwo == allelesChild(1));
-      if mapOne && mapTwo
-        genotypeFactor.val(childIndex)+=length(mapOne)/2*length(mapTwo)/2;
-      endif
-      if allelesChild(1)==allelesChild(2);
-        genotypeFactor.val(childIndex)/=2;
-      endif
+      if all(mapOne) && all(mapTwo)
+        genotypeFactor.val(childIndex)=genotypeFactor.val(childIndex)+length(mapOne)/2*length(mapTwo)/2;
+      end
+      if allelesChild(1) == allelesChild(2)
+        genotypeFactor.val(childIndex)=genotypeFactor.val(childIndex)/2;
+      end
     end
   end
 end    

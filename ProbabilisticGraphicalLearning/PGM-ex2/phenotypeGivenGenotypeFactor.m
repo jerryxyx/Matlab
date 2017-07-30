@@ -42,7 +42,7 @@ phenotypeFactor.val = zeros(1, prod(phenotypeFactor.card));
 % Replace the zeros in phentoypeFactor.val with the correct values.
 assignmentList = IndexToAssignment([1: prod(phenotypeFactor.card)], phenotypeFactor.card);
 isTraitMap = find(assignmentList(:,1) == 1);
-notTraitMap = find(assignmentList(:,1) != 1);
+notTraitMap = find(assignmentList(:,1) ~= 1);
 phenotypeFactor.val(isTraitMap) = alphaList;
-phenotypeFactor.val(notTraitMap) = 1 .- alphaList;
+phenotypeFactor.val(notTraitMap) = 1 - alphaList;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

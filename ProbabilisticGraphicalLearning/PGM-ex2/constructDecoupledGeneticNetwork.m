@@ -81,7 +81,7 @@ numAlleles = length(alleleFreqs); % Number of alleles
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
 for i=1:numPeople
-  if !pedigree.parents(i,:)
+  if ~all(pedigree.parents(i,:))
     factorList(i).var = i;
     factorList(i).card = numAlleles;
     factorList(i).val = alleleFreqs;
@@ -108,7 +108,7 @@ for i=1:numPeople
       prob = length(find(assignment(2:end)==assignment(1)))./length(assignment(2:end));
       factorList(numPeople+i).val(j) = prob;
     end
-  endif
+  end
 
   factorList(2*numPeople+i) = phenotypeGivenCopiesFactor(alphaList,numAlleles,...
     i,numPeople+i,2*numPeople+i);

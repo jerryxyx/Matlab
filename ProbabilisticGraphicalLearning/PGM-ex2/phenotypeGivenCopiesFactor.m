@@ -73,7 +73,7 @@ for i=1:numAlleles
         phenotypeFactor.val(index) = alphaList(genotype);
       else
         phenotypeFactor.val(index) = 1.-alphaList(genotype);
-      endif
+      end
     end
   end
 end
