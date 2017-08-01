@@ -50,8 +50,9 @@ if (~isempty(pairwiseModel))
     % implementation (which you must provide.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    pairwiseFactors = ComputeEqualPairwiseFactors(images, imageModel.K);
-    %pairwiseFactors = ComputePairwiseFactors(images, pairwiseModel, imageModel.K);
+    %pairwiseFactors = ComputeEqualPairwiseFactors(images, imageModel.K);
+    pairwiseFactors = ComputePairwiseFactors(images, pairwiseModel, imageModel.K);
+    
 else
     pairwiseFactors = [];
 end
@@ -77,6 +78,8 @@ else
     % the selected factors.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%
     simFactors = ChooseTopSimilarityFactors(allSimFactors, 2);
+    %simFactors(1).var
+    %simFactors(2).var
 end
 
 % This mess is necessary since Octave crashes if you try to vertcat onto a
@@ -86,6 +89,7 @@ cellFactors{1} = singletonFactors;
 cellFactors{2} = pairwiseFactors;
 cellFactors{3} = tripletFactors;
 cellFactors{4} = simFactors;
+
 factorsPresent = ~[isempty(singletonFactors) isempty(pairwiseFactors) isempty(tripletFactors) isempty(simFactors)];
 
 allFactors = vertcat(cellFactors{factorsPresent});

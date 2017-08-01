@@ -23,7 +23,14 @@ if (length(allFactors) <= F)
 end
 
 % Your code here:
-factors = allFactors; %%% REMOVE THIS LINE
+%factors = allFactors; %%% REMOVE THIS LINE
+similarityList = zeros(1,length(allFactors));
+for i=1:length(allFactors)
+  similarityList(i) = allFactors(i).val(1);
+end
+[B,I] = sort(similarityList,'descend');
+%[~,~,rnk] = unique(similarityList);
+factors = allFactors(I(1:F));
 
 end
 
