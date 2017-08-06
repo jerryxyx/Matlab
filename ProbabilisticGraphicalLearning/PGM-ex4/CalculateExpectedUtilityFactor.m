@@ -17,12 +17,45 @@ function EUF = CalculateExpectedUtilityFactor( I )
   % YOUR CODE HERE...
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
-  F = [I.RandomFactors I.DecisionFactors];
-  U = I.UtilityFactors(1);
-  ParantsOfDecisionFactor = 
-  Joint = ComputeJointDistribution(F);
-  EUList = FactorProduct(Joint, U);
-  EU = sum(EUList.val); 
+  R = I.RandomFactors;
+  D = I.DecisionFactors;
+  U = I.UtilityFactors;
+  varD =[];
+  for i=1:length(D)
+    varD = [varD, D(i).var];
+  end
+  varD = unique(varD);
 
+  %Joint = ComputeJointDistribution(F);
+  %EUList = FactorProduct(Joint, U);
+  %EU = sum(EUList.val); 
+  %EUList =[];
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  %OptimizeWithJointUtility
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  JointUtilityFactor = ComputeSumDistribution(U);
+  Joint = ComputeJointDistribution([R, JointUtilityFactor]);
+  varJoint = Joint.var;
+  [C, iA] = setdiff(varJoint, varD);
+  varJoint = C;
+  EUF = FactorMarginalization(Joint, varJoint);
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  %OptimizeLinearExpectations
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %EUList = struct([]);
+  %for j = 1:length(U) 
+  %  Joint = ComputeJointDistribution([R, U(j)]);
+  %  varJoint = Joint.var;
+  %  [C, iA] = setdiff(varJoint, varD);
+  %  varJoint = C;
+  %  EUList(j) = FactorMarginalization(Joint, varJoint);
+  %end
+  
+  %EUF = ComputeSumDistribution(EUList);
   
 end  
